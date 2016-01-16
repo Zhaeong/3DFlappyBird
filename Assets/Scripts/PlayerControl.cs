@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
     private Rigidbody rb;
-    public float jumpHeight = 4;
+    public float jumpHeight = 14;
     public float speed = 5;
 
     private bool showGUI  = false;
