@@ -4,7 +4,7 @@ using System.Collections;
 
 public class BarrierMovement : MonoBehaviour {
     public float speed = 5;
-    public int scoreCounter;
+    public static int scoreCounter;
     public Text scoreText;
 
     // Use this for initialization
@@ -27,16 +27,17 @@ public class BarrierMovement : MonoBehaviour {
         if (other.CompareTag("EndWall"))
         {
 
-            float fSize = Random.Range(7.0f, 18.0f);            
-            Vector3 vStartPos = new Vector3(-20, fSize, 0);
+            float fSize = Random.Range(7.0f, 18.0f);
+            
+            Vector3 vStartPos = new Vector3(-25, fSize, 0);
          
-	    float distance = fSize * 10;
-           
-            transform.position = vStartPos;           
-            scoreCounter += 10;
+	        
+               
+            scoreCounter += 1;
             Debug.Log("Collided ");
             Debug.Log(scoreCounter);
             scoreText.text = "Score:" + scoreCounter.ToString();
+            transform.position = vStartPos;
         }
     }
 }
