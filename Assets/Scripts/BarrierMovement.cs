@@ -21,20 +21,9 @@ public class BarrierMovement : MonoBehaviour {
     {
         if (other.CompareTag("EndWall"))
         {
-            if (gameObject.name == "TopBar")
-            {
-                Vector3 vStartPos = new Vector3(-10, 8, 0);
-                transform.position = vStartPos;
-            }
-            else if (gameObject.name == "LowerBar")
-            {
-                Vector3 vStartPos = new Vector3(-10, 2, 0);
-                transform.position = vStartPos;
-            }
-
-            Debug.Log("Collided ");
+            float fSize = Random.Range(7.0f, 18.0f);            
+            Vector3 vStartPos = new Vector3(-10, fSize, 0);
+            transform.position = vStartPos;                     
         }
-        
     }
-
 }

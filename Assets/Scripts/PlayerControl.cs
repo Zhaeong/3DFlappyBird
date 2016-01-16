@@ -3,8 +3,9 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
     private Rigidbody rb;
-    public float jump_height = 4;
+    public float jumpHeight = 4;
     public float speed = 5;
+    private bool showGUI  = false;
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
@@ -12,19 +13,21 @@ public class PlayerControl : MonoBehaviour {
 
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         /* horizontal and vertical movement to be added later
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         */
         float jump = Input.GetAxis("Jump");
 
-        Vector3 movement = new Vector3(0, jump_height * jump, 0);
+        Vector3 movement = new Vector3(0, jumpHeight * jump, 0);
         
         if (rb.velocity.magnitude <= 5)
         {
-            rb.AddForce(movement, ForceMode.Impulse);
+            rb.AddForce(movement, ForceMode.Impulse);            
         }
+        
 
     }
     // Update is called once per frame
@@ -32,4 +35,27 @@ public class PlayerControl : MonoBehaviour {
 
 	
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Barrier"))
+        {
+            Debug.Log("Collided");
+            Time.timeScale = 0;
+            showGUI = true;
+        }
+    }
+
+    void OnGUI()
+    {
+        if (showGUI)
+        {
+            if (GUI.Button(new Rect(10, 10, 150, 100), "Restart"))
+            {
+                Application.LoadLevel(0);
+                Time.timeScale = 1;
+            }
+        }
+
+    }
 }
