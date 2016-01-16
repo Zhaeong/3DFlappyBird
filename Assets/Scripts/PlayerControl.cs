@@ -13,8 +13,10 @@ public class PlayerControl : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        /* horizontal and vertical movement to be added later
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
+        */
         float jump = Input.GetAxis("Jump");
 
         Vector3 movement = new Vector3(0, jump_height * jump, 0);
