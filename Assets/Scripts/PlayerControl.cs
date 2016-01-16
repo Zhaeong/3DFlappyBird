@@ -5,7 +5,10 @@ public class PlayerControl : MonoBehaviour {
     private Rigidbody rb;
     public float jumpHeight = 4;
     public float speed = 5;
+
     private bool showGUI  = false;
+
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
