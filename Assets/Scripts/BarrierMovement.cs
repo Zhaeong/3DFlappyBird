@@ -23,12 +23,12 @@ public class BarrierMovement : MonoBehaviour {
         {
             if (gameObject.name == "TopBar")
             {
-                Vector3 vStartPos = new Vector3(-10, 3, 0);
+                Vector3 vStartPos = new Vector3(-10, 8, 0);
                 transform.position = vStartPos;
             }
             else if (gameObject.name == "LowerBar")
             {
-                Vector3 vStartPos = new Vector3(-10, 6, 0);
+                Vector3 vStartPos = new Vector3(-10, 2, 0);
                 transform.position = vStartPos;
             }
 
