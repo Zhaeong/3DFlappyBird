@@ -3,9 +3,11 @@ using System.Collections;
 
 public class BarrierMovement : MonoBehaviour {
     public float speed = 5;
-	// Use this for initialization
-	void Start () {
-	
+    public int scoreCounter;
+
+    // Use this for initialization
+    void Start () {
+        scoreCounter = 0;
 	}
 
     void FixedUpdate() {
@@ -32,7 +34,10 @@ public class BarrierMovement : MonoBehaviour {
                 transform.position = vStartPos;
             }
 
+            scoreCounter += 10;
+
             Debug.Log("Collided ");
+            Debug.Log(scoreCounter);
         }
         
     }

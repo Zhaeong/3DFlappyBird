@@ -5,6 +5,7 @@ public class PlayerControl : MonoBehaviour {
     private Rigidbody rb;
     public float jump_height = 4;
     public float speed = 5;
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
