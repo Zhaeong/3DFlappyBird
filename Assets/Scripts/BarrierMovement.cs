@@ -26,8 +26,12 @@ public class BarrierMovement : MonoBehaviour {
     {
         if (other.CompareTag("EndWall"))
         {
+
             float fSize = Random.Range(7.0f, 18.0f);            
             Vector3 vStartPos = new Vector3(-20, fSize, 0);
+         
+	    float distance = fSize * 10;
+            Vector3 vStartPos = new Vector3(distance, fSize, 0);
             transform.position = vStartPos;           
             scoreCounter += 10;
             Debug.Log("Collided ");
