@@ -1,18 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour {
     private Rigidbody rb;
     public float jumpHeight = 14;
     public float speed = 5;
+    public Text scoreText;
 
     private bool showGUI  = false;
+    public static int scoreCounter;
 
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
-        //rb.mass = 10f;
+        scoreCounter = 0;
+        scoreText.text = scoreCounter.ToString();
+       
 
     }
 
@@ -26,7 +32,7 @@ public class PlayerControl : MonoBehaviour {
 
         Vector3 movement = new Vector3(0, jumpHeight * jump, 0);
         
-        if (rb.velocity.magnitude <= 5)
+        //if (rb.velocity.magnitude <= 5)
         {
             rb.AddForce(movement, ForceMode.Impulse);            
         }
@@ -46,6 +52,17 @@ public class PlayerControl : MonoBehaviour {
             Debug.Log("Collided");
             Time.timeScale = 0;
             showGUI = true;
+            if (Input.GetKeyDown("space"))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                Time.timeScale = 1;
+            }
+        }
+        if (other.CompareTag("ScoreCollision"))
+        {
+            scoreCounter += 1;
+            scoreText.text = scoreCounter.ToString();
+
         }
     }
 
@@ -53,9 +70,11 @@ public class PlayerControl : MonoBehaviour {
     {
         if (showGUI)
         {
-            if (GUI.Button(new Rect(10, 10, 150, 100), "Restart"))
+            //The commented out code displays a button, kinda clunky and not necessary
+            //if (GUI.Button(new Rect(10, 10, 150, 100), "Restart") || Input.GetKeyDown("r") || Input.GetKeyDown("space"))
+            if (Input.GetKeyDown("space"))
             {
-                Application.LoadLevel(0);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 Time.timeScale = 1;
             }
         }

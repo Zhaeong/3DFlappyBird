@@ -5,12 +5,10 @@ using System.Collections;
 public class BarrierMovement : MonoBehaviour {
     public float speed = 5;
     public static int scoreCounter;
-    public Text scoreText;
+    
 
     // Use this for initialization
     void Start () {
-        scoreCounter = 0;
-        scoreText.text = "Score:" + scoreCounter.ToString();
 	}
 
     void FixedUpdate() {
@@ -26,17 +24,8 @@ public class BarrierMovement : MonoBehaviour {
     {
         if (other.CompareTag("EndWall"))
         {
-
-            float fSize = Random.Range(7.0f, 18.0f);
-            
-            Vector3 vStartPos = new Vector3(-25, fSize, 0);
-         
-	        
-               
-            scoreCounter += 1;
-            Debug.Log("Collided ");
-            Debug.Log(scoreCounter);
-            scoreText.text = "Score:" + scoreCounter.ToString();
+            float fSize = Random.Range(6.0f, 21.0f);
+            Vector3 vStartPos = new Vector3(-25, fSize, 0);	        
             transform.position = vStartPos;
         }
     }
